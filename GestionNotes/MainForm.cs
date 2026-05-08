@@ -14,5 +14,12 @@ namespace GestionNotes
         {
             InitializeComponent();
         }
+
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            PageAjoutNotes form = new PageAjoutNotes();
+            form.Show();
+            this.Hide();
+        }
     }
 }

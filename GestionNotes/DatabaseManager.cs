@@ -32,14 +32,16 @@ public sealed class DatabaseManager
         CREATE TABLE IF NOT EXISTS branches (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nom TEXT NOT NULL,
-            coefficient REAL NOT NULL
         );
+        INSERT INTO branches (nom) VALUES ("Module");
+        INSERT INTO branches (nom) VALUES ("Atelier");
 
         CREATE TABLE IF NOT EXISTS notes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             utilisateur_id INTEGER NOT NULL,
             branche_id INTEGER NOT NULL,
-            note REAL NOT NULL,
+            note DOUBLE NOT NULL,
+            coefficient DOUBLE NOT NULL,
             FOREIGN KEY(utilisateur_id) REFERENCES utilisateurs(id),
             FOREIGN KEY(branche_id) REFERENCES branches(id)
         );

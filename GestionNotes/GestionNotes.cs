@@ -8,6 +8,7 @@ namespace GestionNotes
         private List<Utilisateur> users = new List<Utilisateur>();
         private string email = string.Empty;
         private string password = string.Empty;
+
         public GestionNotes()
         {
             InitializeComponent();
@@ -18,15 +19,20 @@ namespace GestionNotes
             users = RecupererUsers();
             email = tbxEmail.Text;
             password = tbxMdp.Text;
+
             foreach (Utilisateur user in users)
             {
                 if (user.Email == email && user.MotDePasse == password)
                 {
-                    MainForm MainForm = new MainForm();
-                    MainForm.Show();
-                    this.Close();
+                    MainForm mainForm = new MainForm();
+                    mainForm.Show();
+                    this.Hide();
+                    return;
                 }
             }
+
+            MessageBox.Show("Email ou mot de passe incorrect.", "Erreur de connexion",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         public List<Utilisateur> RecupererUsers()
@@ -55,9 +61,9 @@ namespace GestionNotes
 
         private void btnInscription_Click(object sender, EventArgs e)
         {
-            PageInscription Form = new PageInscription();
-            Form.Show();
-            this.Close();
+            PageInscription form = new PageInscription();
+            form.Show();
+            this.Hide();
         }
     }
 }
