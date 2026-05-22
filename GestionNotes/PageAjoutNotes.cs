@@ -18,12 +18,13 @@ namespace GestionNotes
         public PageAjoutNotes()
         {
             InitializeComponent();
+            ChargerBranches();
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             note = Convert.ToDouble(numNote.Value);
-            coefficient = Convert.ToDouble(numCoefficient.Text);
+            coefficient = Convert.ToDouble(numCoefficient.Value);
 
             if (note > 6 || note < 1)
             {
@@ -33,33 +34,70 @@ namespace GestionNotes
             }
             if (coefficient < 0.5 || coefficient > 100)
             {
-                MessageBox.Show("Le coefficient minimum est 1 et maximum 100", "Champs invalide",
+                MessageBox.Show("Le coefficient minimum est 0.5 et maximum 100", "Champs invalide",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                AjouterNote(note, coefficient);
+                AjouterNote(1, (int)cmbBranches.SelectedValue, note, coefficient);
 
-                GestionNotes loginForm = new GestionNotes();
-                loginForm.Show();
+                MainForm MainForm  = new MainForm();
+                MainForm.Show();
                 this.Close();
             }
             catch (Microsoft.Data.Sqlite.SqliteException ex) when (ex.Message.Contains("UNIQUE"))
             {
-                MessageBox.Show("Cet email est deja utilise.", "Erreur d'inscription",
+                MessageBox.Show("Erreur : Donnees invalides.", "Erreur de note",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void AjouterUtilisateur(string nom, string email, string mdp)
+
+
+
+        public void AjouterNote(int idUser,int brancheId, double note, double coefficient)
         {
+
             var cmd = _db.CreateCommand();
-            cmd.CommandText = "INSERT INTO utilisateurs (nom, email, mot_de_passe) VALUES ($nom, $email, $mdp)";
-            cmd.Parameters.AddWithValue("$nom", nom);
-            cmd.Parameters.AddWithValue("$email", email);
-            cmd.Parameters.AddWithValue("$mdp", mdp);
-            cmd.ExecuteNonQuery();
+
+            var insert = _db.CreateCommand();
+            insert.CommandText = "INSERT INTO notes (utilisateur_id, branche_id, note, coefficient) VALUES ($uid, $bid, $note, $coeff)";
+            insert.Parameters.AddWithValue("$uid", idUser);
+            insert.Parameters.AddWithValue("$bid", brancheId);
+            insert.Parameters.AddWithValue("$note", note);
+            insert.Parameters.AddWithValue("$coeff", coefficient);
+            insert.ExecuteNonQuery();
+        }
+
+        private void ChargerBranches()
+        {
+            try
+            {
+                var cmd = _db.CreateCommand();
+                cmd.CommandText = "SELECT id, nom FROM branches ORDER BY nom";
+                using var reader = cmd.ExecuteReader();
+
+                var table = new System.Data.DataTable();
+                table.Columns.Add("id", typeof(int));
+                table.Columns.Add("nom", typeof(string));
+
+                while (reader.Read())
+                {
+                    var id = reader.GetInt32(0);
+                    var nom = reader.IsDBNull(1) ? string.Empty : reader.GetString(1);
+                    table.Rows.Add(id, nom);
+                }
+
+                cmbBranches.DisplayMember = "nom";
+                cmbBranches.ValueMember = "id";
+                cmbBranches.DataSource = table;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors du chargement des branches : " + ex.Message, "Erreur",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

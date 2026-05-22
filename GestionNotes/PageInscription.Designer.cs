@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            tbxNom = new TextBox();
+            lblNom = new Label();
+            tbxEmail = new TextBox();
+            lblEmail = new Label();
             tbxMdp = new TextBox();
             lblMdp = new Label();
             btnConfirmerInscription = new Button();
             lblTitreInscription = new Label();
-            tbxEmail = new TextBox();
-            lblEmail = new Label();
-            tbxNom = new TextBox();
-            lblNom = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -53,7 +53,43 @@
             panel1.Location = new Point(12, 77);
             panel1.Name = "panel1";
             panel1.Size = new Size(309, 334);
-            panel1.TabIndex = 4;
+            panel1.TabIndex = 1;
+            // 
+            // tbxNom
+            // 
+            tbxNom.Font = new Font("Segoe UI", 14.25F);
+            tbxNom.Location = new Point(3, 50);
+            tbxNom.Multiline = true;
+            tbxNom.Name = "tbxNom";
+            tbxNom.Size = new Size(301, 35);
+            tbxNom.TabIndex = 1;
+            // 
+            // lblNom
+            // 
+            lblNom.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNom.Location = new Point(-1, 14);
+            lblNom.Name = "lblNom";
+            lblNom.Size = new Size(301, 23);
+            lblNom.TabIndex = 4;
+            lblNom.Text = "Nom";
+            // 
+            // tbxEmail
+            // 
+            tbxEmail.Font = new Font("Segoe UI", 14.25F);
+            tbxEmail.Location = new Point(3, 135);
+            tbxEmail.Multiline = true;
+            tbxEmail.Name = "tbxEmail";
+            tbxEmail.Size = new Size(301, 35);
+            tbxEmail.TabIndex = 3;
+            // 
+            // lblEmail
+            // 
+            lblEmail.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblEmail.Location = new Point(3, 99);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(301, 23);
+            lblEmail.TabIndex = 2;
+            lblEmail.Text = "Email";
             // 
             // tbxMdp
             // 
@@ -62,7 +98,7 @@
             tbxMdp.Multiline = true;
             tbxMdp.Name = "tbxMdp";
             tbxMdp.Size = new Size(301, 35);
-            tbxMdp.TabIndex = 4;
+            tbxMdp.TabIndex = 5;
             // 
             // lblMdp
             // 
@@ -70,7 +106,7 @@
             lblMdp.Location = new Point(3, 182);
             lblMdp.Name = "lblMdp";
             lblMdp.Size = new Size(301, 23);
-            lblMdp.TabIndex = 3;
+            lblMdp.TabIndex = 4;
             lblMdp.Text = "Mot de passe";
             // 
             // btnConfirmerInscription
@@ -79,7 +115,7 @@
             btnConfirmerInscription.Location = new Point(13, 265);
             btnConfirmerInscription.Name = "btnConfirmerInscription";
             btnConfirmerInscription.Size = new Size(281, 50);
-            btnConfirmerInscription.TabIndex = 1;
+            btnConfirmerInscription.TabIndex = 6;
             btnConfirmerInscription.Text = "Confirmer";
             btnConfirmerInscription.UseVisualStyleBackColor = true;
             btnConfirmerInscription.Click += btnConfirmerInscription_Click;
@@ -91,45 +127,9 @@
             lblTitreInscription.Location = new Point(12, 8);
             lblTitreInscription.Name = "lblTitreInscription";
             lblTitreInscription.Size = new Size(309, 48);
-            lblTitreInscription.TabIndex = 3;
+            lblTitreInscription.TabIndex = 0;
             lblTitreInscription.Text = "Inscription";
             lblTitreInscription.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // tbxEmail
-            // 
-            tbxEmail.Font = new Font("Segoe UI", 14.25F);
-            tbxEmail.Location = new Point(3, 135);
-            tbxEmail.Multiline = true;
-            tbxEmail.Name = "tbxEmail";
-            tbxEmail.Size = new Size(301, 35);
-            tbxEmail.TabIndex = 6;
-            // 
-            // lblEmail
-            // 
-            lblEmail.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblEmail.Location = new Point(3, 99);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(301, 23);
-            lblEmail.TabIndex = 5;
-            lblEmail.Text = "Email";
-            // 
-            // tbxNom
-            // 
-            tbxNom.Font = new Font("Segoe UI", 14.25F);
-            tbxNom.Location = new Point(3, 50);
-            tbxNom.Multiline = true;
-            tbxNom.Name = "tbxNom";
-            tbxNom.Size = new Size(301, 35);
-            tbxNom.TabIndex = 8;
-            // 
-            // lblNom
-            // 
-            lblNom.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNom.Location = new Point(-1, 14);
-            lblNom.Name = "lblNom";
-            lblNom.Size = new Size(301, 23);
-            lblNom.TabIndex = 7;
-            lblNom.Text = "Nom";
             // 
             // PageInscription
             // 
@@ -139,6 +139,7 @@
             Controls.Add(panel1);
             Controls.Add(lblTitreInscription);
             Name = "PageInscription";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PageInscription";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

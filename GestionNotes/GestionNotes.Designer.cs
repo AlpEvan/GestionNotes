@@ -70,7 +70,8 @@
             tbxMdp.Multiline = true;
             tbxMdp.Name = "tbxMdp";
             tbxMdp.Size = new Size(301, 35);
-            tbxMdp.TabIndex = 4;
+            tbxMdp.TabIndex = 3;
+            tbxMdp.Text = "Super";
             // 
             // lblMdp
             // 
@@ -78,7 +79,7 @@
             lblMdp.Location = new Point(3, 127);
             lblMdp.Name = "lblMdp";
             lblMdp.Size = new Size(301, 23);
-            lblMdp.TabIndex = 3;
+            lblMdp.TabIndex = 2;
             lblMdp.Text = "Mot de passe";
             // 
             // tbxEmail
@@ -88,7 +89,8 @@
             tbxEmail.Multiline = true;
             tbxEmail.Name = "tbxEmail";
             tbxEmail.Size = new Size(301, 35);
-            tbxEmail.TabIndex = 2;
+            tbxEmail.TabIndex = 1;
+            tbxEmail.Text = "evan@gmail.com";
             // 
             // btnConnexion
             // 
@@ -96,7 +98,7 @@
             btnConnexion.Location = new Point(13, 265);
             btnConnexion.Name = "btnConnexion";
             btnConnexion.Size = new Size(281, 50);
-            btnConnexion.TabIndex = 1;
+            btnConnexion.TabIndex = 4;
             btnConnexion.Text = "Se connecter";
             btnConnexion.UseVisualStyleBackColor = true;
             btnConnexion.Click += btnConnexion_Click;

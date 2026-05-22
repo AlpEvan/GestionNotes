@@ -24,7 +24,7 @@ namespace GestionNotes
             {
                 if (user.Email == email && user.MotDePasse == password)
                 {
-                    MainForm mainForm = new MainForm();
+                    MainForm mainForm = new MainForm(user);
                     mainForm.Show();
                     this.Hide();
                     return;

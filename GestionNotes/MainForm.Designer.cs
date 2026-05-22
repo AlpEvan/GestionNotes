@@ -63,7 +63,7 @@
             btnGraphiques.Location = new Point(12, 255);
             btnGraphiques.Name = "btnGraphiques";
             btnGraphiques.Size = new Size(334, 183);
-            btnGraphiques.TabIndex = 2;
+            btnGraphiques.TabIndex = 3;
             btnGraphiques.Text = "Graphiques";
             btnGraphiques.UseVisualStyleBackColor = true;
             // 
@@ -73,9 +73,10 @@
             btnConsulter.Location = new Point(388, 64);
             btnConsulter.Name = "btnConsulter";
             btnConsulter.Size = new Size(334, 183);
-            btnConsulter.TabIndex = 3;
+            btnConsulter.TabIndex = 2;
             btnConsulter.Text = "Consulter les notes";
             btnConsulter.UseVisualStyleBackColor = true;
+            btnConsulter.Click += btnConsulter_Click;
             // 
             // btnSauvegarder
             // 
@@ -98,6 +99,7 @@
             Controls.Add(btnAjouter);
             Controls.Add(lblTitre);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "MainForm";
             ResumeLayout(false);
         }
